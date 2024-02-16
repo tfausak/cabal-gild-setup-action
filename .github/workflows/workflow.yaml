@@ -1,0 +1,22 @@
+{
+  "jobs": {
+    "action": {
+      "runs-on": "ubuntu-22.04",
+      "steps": [
+        {
+          "uses": "actions/checkout@v4"
+        },
+        {
+          "uses": "."
+        },
+        {
+          "run": "cabal-gild --version"
+        }
+      ]
+    }
+  },
+  "name": "Workflow",
+  "on": {
+    "push": null
+  }
+}

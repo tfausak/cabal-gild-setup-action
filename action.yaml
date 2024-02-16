@@ -1,0 +1,18 @@
+{
+  "branding": {
+    "color": "purple",
+    "icon": "download"
+  },
+  "description": "Installs the cabal-gild executable for formatting Haskell package descriptions.",
+  "inputs": {
+    "version": {
+      "default": "latest",
+      "description": "The version of Gild to use."
+    }
+  },
+  "name": "Setup Gild",
+  "runs": {
+    "main": "index.js",
+    "using": "node20"
+  }
+}
