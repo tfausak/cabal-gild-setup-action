@@ -5,7 +5,7 @@ const process = require('process');
 const tc = require('@actions/tool-cache');
 
 const TOOL_NAME = 'cabal-gild';
-const LATEST_VERSION = '0.3.0.1';
+const LATEST_VERSION = '1.0.0.0';
 
 (async () => {
   try {
