@@ -1,7 +1,7 @@
 {
   "jobs": {
     "action": {
-      "runs-on": "ubuntu-22.04",
+      "runs-on": "${{ matrix.os }}",
       "steps": [
         {
           "uses": "actions/checkout@v4"
@@ -12,7 +12,17 @@
         {
           "run": "cabal-gild --version"
         }
-      ]
+      ],
+      "strategy": {
+        "matrix": {
+          "os": [
+            "macos-13",
+            "macos-14",
+            "ubuntu-22.04",
+            "windows-2022"
+          ]
+        }
+      }
     }
   },
   "name": "Workflow",
