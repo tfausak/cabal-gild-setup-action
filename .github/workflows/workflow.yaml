@@ -14,6 +14,7 @@
         }
       ],
       "strategy": {
+        "fail-fast": false,
         "matrix": {
           "os": [
             "macos-13",
