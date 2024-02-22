@@ -28,7 +28,9 @@ const TOOL_NAME = 'cabal-gild';
 
     let dir = toolCache.find(TOOL_NAME, version);
     if (!dir) {
-      const file = await toolCache.downloadTool(`https://github.com/tfausak/cabal-gild/releases/download/${version}/cabal-gild-${version}-${platform}-${architecture}.tar.gz`);
+      const url = `https://github.com/tfausak/cabal-gild/releases/download/${version}/cabal-gild-${version}-${platform}-${architecture}.tar.gz`;
+      core.info(JSON.stringify({ url }));
+      const file = await toolCache.downloadTool(url);
       core.info(JSON.stringify({ file }));
       const directory = await toolCache.extractTar(file);
       core.info(JSON.stringify({ directory }));
