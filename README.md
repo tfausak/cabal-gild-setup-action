@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: tfausak/cabal-gild-setup-action@v1
+      - uses: tfausak/cabal-gild-setup-action@v2
       - run: cabal-gild --input my-package.cabal --mode check
 ```
 
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: tfausak/cabal-gild-setup-action@v1
+      - uses: tfausak/cabal-gild-setup-action@v2
         with:
           version: 0.3.0.1
       - run: cabal-gild --input my-package.cabal --mode check
@@ -35,7 +35,8 @@ jobs:
 
 ## Inputs
 
-- `version`: Optional. Defaults to `latest`. The version of Gild to use. Any
-  version from [the releases page][] should work.
+- `version`: Optional. Defaults to `latest`. The version of Gild to use. Find
+  versions on [the releases page][]. `v1` of this action supports `< 1.0.2.1`.
+  `v2` of this action supports `>= 1.0.2.1`.
 
 [the releases page]: https://github.com/tfausak/cabal-gild/releases
