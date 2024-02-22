@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const fs = require('fs/promises');
 const httpClient = require('@actions/http-client');
 const os = require('os');
+const path = require('path');
 const process = require('process');
 const toolCache = require('@actions/tool-cache');
 
@@ -22,9 +23,9 @@ const TOOL_NAME = 'cabal-gild';
 
     let dir = toolCache.find(TOOL_NAME, version);
     if (!dir) {
-      const file = await toolCache.downloadTool(`https://github.com/tfausak/cabal-gild/releases/download/${version}/cabal-gild-${version}-${platform}-${architecture}${extension}`);
-      await fs.chmod(file, 0o755);
-      dir = await toolCache.cacheFile(file, `${TOOL_NAME}${extension}`, TOOL_NAME, version);
+      const file = await toolCache.downloadTool(`https://github.com/tfausak/cabal-gild/releases/download/${version}/cabal-gild-${version}-${platform}-${architecture}.tar.gz`);
+      const directory = await toolCache.extractTar(file);
+      dir = await toolCache.cacheFile(path.join(directory, `${TOOL_NAME}${extension}`), `${TOOL_NAME}${extension}`, TOOL_NAME, version);
     }
 
     core.addPath(dir);
