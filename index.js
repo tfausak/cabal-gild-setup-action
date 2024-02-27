@@ -1,8 +1,6 @@
 const core = require('@actions/core');
 const httpClient = require('@actions/http-client');
-const os = require('os');
 const path = require('path');
-const process = require('process');
 const toolCache = require('@actions/tool-cache');
 
 const HTTP_CLIENT = new httpClient.HttpClient('tfausak/cabal-gild-setup-action');
@@ -10,9 +8,9 @@ const TOOL_NAME = 'cabal-gild';
 
 (async () => {
   try {
-    const platform = process.platform;
-    const architecture = os.arch();
-    const extension = platform === 'win32' ? '.exe' : '';
+    const platform = core.platform.platform;
+    const architecture = core.platform.arch;
+    const extension = core.platform.isWindows ? '.exe' : '';
     core.info(JSON.stringify({ platform, architecture }));
 
     let version = core.getInput('version');
