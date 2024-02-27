@@ -13,12 +13,14 @@ const TOOL_NAME = 'cabal-gild';
     const platform = process.platform;
     const architecture = os.arch();
     const extension = platform === 'win32' ? '.exe' : '';
+    core.info(JSON.stringify({ platform, architecture }));
 
     let version = core.getInput('version');
     if (!version || version === 'latest') {
       const response = await HTTP_CLIENT.getJson('https://api.github.com/repos/tfausak/cabal-gild/releases/latest');
       version = response.result.tag_name;
     }
+    core.info(JSON.stringify({ version }));
 
     let dir = toolCache.find(TOOL_NAME, version);
     if (!dir) {
@@ -26,6 +28,7 @@ const TOOL_NAME = 'cabal-gild';
       const directory = await toolCache.extractTar(file);
       dir = await toolCache.cacheFile(path.join(directory, `${TOOL_NAME}${extension}`), `${TOOL_NAME}${extension}`, TOOL_NAME, version);
     }
+    core.info(JSON.stringify({ dir }))
 
     core.addPath(dir);
   } catch (error) {
