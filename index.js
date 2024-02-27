@@ -32,7 +32,7 @@ const TOOL = REPO;
         headers['Authorization'] = `Bearer ${token}`;
       }
       const response = await HTTP.getJson(
-        `'https://api.github.com/repos/${USER}/${REPO}/releases/latest'`,
+        `https://api.github.com/repos/${USER}/${REPO}/releases/latest`,
         headers);
       version = response.result.tag_name;
     }
