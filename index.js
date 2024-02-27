@@ -23,6 +23,7 @@ const TOOL_NAME = 'cabal-gild';
       };
       const token = process.env['GITHUB_TOKEN'];
       if (token) {
+        core.info('got token');
         headers['Authorization'] = `Bearer ${token}`;
       }
       const response = await HTTP_CLIENT.getJson('https://api.github.com/repos/tfausak/cabal-gild/releases/latest', headers);
