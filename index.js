@@ -5,7 +5,7 @@ const path = require('path');
 const process = require('process');
 const toolCache = require('@actions/tool-cache');
 
-const HTTP_CLIENT = new httpClient.HttpClient('@tfausak/cabal-gild-setup-action');
+const HTTP_CLIENT = new httpClient.HttpClient('tfausak/cabal-gild-setup-action');
 const TOOL_NAME = 'cabal-gild';
 
 (async () => {
