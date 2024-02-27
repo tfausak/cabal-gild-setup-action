@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const fs = require('fs/promises');
 const httpClient = require('@actions/http-client');
 const os = require('os');
 const path = require('path');
