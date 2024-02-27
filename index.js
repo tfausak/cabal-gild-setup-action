@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const httpClient = require('@actions/http-client');
 const path = require('path');
+const process = require('process');
 const toolCache = require('@actions/tool-cache');
 
 const HTTP_CLIENT = new httpClient.HttpClient('tfausak/cabal-gild-setup-action');
@@ -16,11 +17,15 @@ const TOOL_NAME = 'cabal-gild';
     let version = core.getInput('version');
     if (!version || version === 'latest') {
       // https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
-      const response = await HTTP_CLIENT.getJson('https://api.github.com/repos/tfausak/cabal-gild/releases/latest', {
+      const headers = {
         Accept: 'application/vnd.github+json',
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
         'X-GitHub-Api-Version': '2022-11-28',
-      });
+      };
+      const token = process.env['GITHUB_TOKEN'];
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      const response = await HTTP_CLIENT.getJson('https://api.github.com/repos/tfausak/cabal-gild/releases/latest', headers);
       version = response.result.tag_name;
     }
     core.info(JSON.stringify({ version }));
