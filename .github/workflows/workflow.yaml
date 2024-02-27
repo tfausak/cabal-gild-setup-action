@@ -7,7 +7,10 @@
           "uses": "actions/checkout@v4"
         },
         {
-          "uses": "./"
+          "uses": "./",
+          "with": {
+            "token": "${{ secrets.GITHUB_TOKEN }}"
+          }
         },
         {
           "run": "cabal-gild --version"
