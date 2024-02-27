@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: tfausak/cabal-gild-setup-action@v2
         with:
-          version: 0.3.0.1
+          version: 1.1.0.0
       - run: cabal-gild --input my-package.cabal --mode check
 ```
 
