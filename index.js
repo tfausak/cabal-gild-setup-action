@@ -20,7 +20,7 @@ const TOOL_NAME = 'cabal-gild';
       // https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
       const response = await HTTP_CLIENT.getJson('https://api.github.com/repos/tfausak/cabal-gild/releases/latest', {
         Accept: 'application/vnd.github+json',
-        Authorization: `Bearer $GITHUB_TOKEN`,
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
         'X-GitHub-Api-Version': '2022-11-28',
       });
       version = response.result.tag_name;
