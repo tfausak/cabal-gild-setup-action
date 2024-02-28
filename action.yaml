@@ -6,6 +6,7 @@
   "description": "Installs the cabal-gild executable for formatting Haskell package descriptions.",
   "inputs": {
     "token": {
+      "default": "${{ github.token }}",
       "description": "The token to use when communicating with GitHub's API."
     },
     "version": {
