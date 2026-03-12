@@ -4,5 +4,12 @@
     "@actions/http-client": "4.0.0",
     "@actions/tool-cache": "4.0.0"
   },
-  "private": true
+  "devDependencies": {
+    "@vercel/ncc": "0.38.4"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "ncc build index.js --out dist"
+  }
 }

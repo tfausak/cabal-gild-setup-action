@@ -8,7 +8,7 @@ inputs:
     default: latest
     description: The version of Gild to use.
 runs:
-  main: index.js
+  main: dist/index.js
   using: node24
 branding:
   color: purple
