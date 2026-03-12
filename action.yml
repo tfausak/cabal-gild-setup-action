@@ -9,7 +9,7 @@ inputs:
     description: The version of Gild to use.
 runs:
   main: index.js
-  using: node22
+  using: node24
 branding:
   color: purple
   icon: download
