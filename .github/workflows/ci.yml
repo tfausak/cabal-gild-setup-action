@@ -1,0 +1,16 @@
+name: CI
+on:
+  push: null
+jobs:
+  action:
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      matrix:
+        os:
+          - macos
+          - ubuntu
+          - windows
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./
+      - run: cabal-gild --version

@@ -1,0 +1,15 @@
+name: Setup Gild
+description: Installs the cabal-gild executable for formatting Haskell package descriptions.
+inputs:
+  token:
+    default: ${{ github.token }}
+    description: The token to use when communicating with GitHub's API.
+  version:
+    default: latest
+    description: The version of Gild to use.
+runs:
+  main: index.js
+  using: node22
+branding:
+  color: purple
+  icon: download
