@@ -12,9 +12,9 @@ Basic usage:
 ``` yaml
 jobs:
   gild:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: tfausak/cabal-gild-setup-action@v2
       - run: cabal-gild --input my-package.cabal --mode check
 ```
@@ -24,12 +24,12 @@ Specifying a version:
 ``` yaml
 jobs:
   gild:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: tfausak/cabal-gild-setup-action@v2
         with:
-          version: 1.1.0.0
+          version: 1.7.0.2
       - run: cabal-gild --input my-package.cabal --mode check
 ```
 
